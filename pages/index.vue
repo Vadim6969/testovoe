@@ -1,7 +1,22 @@
 <template>
-  <Tutorial/>
+  <div class="wrapper">
+    <form-component/>
+    <card-list/>
+  </div>
+
 </template>
 
 <script>
-export default {}
+import FormComponent from '~/components/formComponets/formComponent'
+import CardList from '~/components/listCardComponents/cardList'
+export default {
+  components: { CardList, FormComponent },
+  layout: 'default',
+}
 </script>
+<style scoped lang='scss'>
+.wrapper{
+  display: flex;
+}
+
+</style>

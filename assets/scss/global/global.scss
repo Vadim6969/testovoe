@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Source+Sans+Pro:wght@400;600&display=swap');
+*{
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+body {
+  background: rgba(255, 254, 251, 0.8);
+}
+button {
+  font-family: 'Inter', sans-serif;
+}
+h3{
+  margin: 0;
+}
+li, ol{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
