@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <form-component/>
-    <card-list/>
+    <card-list class="card-list"/>
   </div>
 
 </template>

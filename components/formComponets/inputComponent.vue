@@ -1,9 +1,11 @@
 <template>
-  <div class="form__input-wrapper">
-    <label :for='id' class='form__label'>
-      <span v-if='requiredVal' class='circle'></span>
+  <div class='form__input-wrapper'>
+    <div class='label-wrapper'>
+      <label :for='id' class='form__label'>
         {{ label }}
-    </label>
+      </label>
+      <span v-if='requiredVal' class='circle'></span>
+    </div>
     <input :id='id' type='text' :name='id' class='form__input' :placeholder='placeholder'>
   </div>
 </template>
@@ -23,7 +25,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: ""
+      default: ''
     },
     requiredVal: {
       type: Boolean,
@@ -35,11 +37,21 @@ export default {
 
 <style scoped lang='scss'>
 @import "~@/assets/scss/global/_color.scss";
-.form{
-  &__label {
+
+.label-wrapper {
+  display: flex;
+  .circle {
     display: block;
+    width: 4px;
+    height: 4px;
+    background: #FF8484;
+    border-radius: 4px;
+  }
+}
+
+.form {
+  &__label {
     margin-bottom: 4px;
-    position: relative;
     font-style: normal;
     font-weight: normal;
     font-size: 10px;
@@ -47,16 +59,6 @@ export default {
     letter-spacing: -0.02em;
     color: $color-dark;
 
-    .circle {
-      position: absolute;
-      top: 0;
-      right: 0;
-      content: "";
-      width: 4px;
-      height: 4px;
-      background: #FF8484;
-      border-radius: 4px;
-    }
   }
 
   &__input {
@@ -71,6 +73,7 @@ export default {
     background: #FFFEFB;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
+
     &-wrapper {
       margin-bottom: 16px;
     }

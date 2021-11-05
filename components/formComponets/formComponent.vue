@@ -22,7 +22,6 @@
     <button-component class='form__btn'>
       Добавить товар
     </button-component>
-
   </form>
 </template>
 
@@ -43,6 +42,8 @@ export default {
   padding: 24px;
   max-width: 332px;
   width: 100%;
+  height: 100%;
+  max-height: 440px;
   background: #FFFEFB;
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
   border-radius: 4px;
