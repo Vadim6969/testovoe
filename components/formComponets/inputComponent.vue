@@ -6,7 +6,13 @@
       </label>
       <span v-if='requiredVal' class='circle'></span>
     </div>
-    <input :id='id' type='text' :name='id' class='form__input' :placeholder='placeholder'>
+    <input :id='id'
+           :value='value'
+           type='text'
+           :name='id'
+           class='form__input'
+           :placeholder='placeholder'
+           @input="input($event)"/>
   </div>
 </template>
 
@@ -30,8 +36,30 @@ export default {
     requiredVal: {
       type: Boolean,
       default: false
+    },
+    maskPrice: {
+      type: Boolean,
+      default: false,
+    }
+  },
+  data() {
+    return {
+      value:''
+    }
+  },
+  methods: {
+    input(e) {
+      if(this.maskPrice) {
+        const val = e.target.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+        this.value = val
+        this.$emit('input', val)
+      } else {
+        this.$emit('input', e.target.value)
+      }
+
     }
   }
+
 }
 </script>
 
@@ -68,7 +96,7 @@ export default {
     font-weight: normal;
     font-size: 12px;
     line-height: 15px;
-    color: $color-gray;
+    color: $color-dark;
     padding: 10px 16px 11px 16px;
     background: #FFFEFB;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);

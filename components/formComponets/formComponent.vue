@@ -1,37 +1,74 @@
 <template>
-  <form class='form form-wrapper'>
+  <form class='form form-wrapper'
+        @submit.prevent="formSubmit">
     <input-component
       id='name'
+      v-model='form.title'
       placeholder='Введите наименование товара'
       label='Наименование товара'
       required-val/>
     <textarea-component
-      placeholder='Введите описание товара'
       id='textarea'
-      label='Описание товара'/>
+      v-model='form.text'
+      placeholder='Введите описание товара'
+      label='Описание товара'
+    />
     <input-component
-      id='name'
+      id='link'
+      v-model='form.img'
       placeholder='Введите ссылку'
       label='Ссылка на изображение товара'
       required-val/>
     <input-component
-      id='name'
+      id='price'
+      v-model='form.price'
       placeholder='Введите цену'
       label='Цена товара'
+      mask-price
       required-val/>
-    <button-component class='form__btn'>
+    <button-component :active='formValid' class='form__btn'>
       Добавить товар
     </button-component>
   </form>
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 import InputComponent from '~/components/formComponets/inputComponent'
 import TextareaComponent from '~/components/formComponets/textareaComponent'
 import ButtonComponent from '~/components/formComponets/buttonComponent'
 export default {
   name: 'FormComponent',
-  components: { ButtonComponent, TextareaComponent, InputComponent }
+  components: { ButtonComponent, TextareaComponent, InputComponent },
+  data() {
+    return {
+      form: {
+        id: Date.now(),
+        title: "",
+        text: "",
+        img: "",
+        price: "",
+      },
+      formValid: false
+    }
+  },
+  watch: {
+    form: {
+      handler(val){
+        this.formValid = !!(val.title && val.price && val.img);
+      },
+      deep: true
+    }
+  },
+  methods: {
+    ...mapActions({
+      addCard: 'cardList/addCard'
+    }),
+    formSubmit(){
+     this.addCard(this.form)
+    }
+  }
+
 }
 </script>
 

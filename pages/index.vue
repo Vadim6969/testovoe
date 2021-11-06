@@ -1,7 +1,10 @@
 <template>
   <div class="wrapper">
-    <form-component/>
-    <card-list class="card-list"/>
+    <header-component/>
+    <main class="main">
+      <form-component/>
+      <card-list class="card-list"/>
+    </main>
   </div>
 
 </template>
@@ -9,14 +12,16 @@
 <script>
 import FormComponent from '~/components/formComponets/formComponent'
 import CardList from '~/components/listCardComponents/cardList'
+import HeaderComponent from '~/components/headerComponent'
 export default {
-  components: { CardList, FormComponent },
+  components: { HeaderComponent, CardList, FormComponent },
   layout: 'default',
 }
 </script>
 <style scoped lang='scss'>
-.wrapper{
+.main{
   display: flex;
 }
+
 
 </style>

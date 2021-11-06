@@ -39,6 +39,9 @@ export const state = () => ({
   ]
 })
 export const mutations = {
+  addCard(state, payload) {
+    state.list.push(payload)
+  },
   deleteItem(state, payload) {
     state.list.forEach((el, i) => {
       if (el.id === payload) state.list.splice(i, 1)
@@ -47,6 +50,9 @@ export const mutations = {
   }
 }
 export const actions = {
+  addCard(context, payload) {
+    context.commit('addCard', payload)
+  },
   deleteItem(context, payload) {
     context.commit('deleteItem', payload)
 

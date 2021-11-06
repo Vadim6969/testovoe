@@ -1,12 +1,18 @@
 <template>
-  <button class='btn-component'>
+  <button class='button-component' :disabled='!active'>
     <slot></slot>
   </button>
 </template>
 
 <script>
 export default {
-  name: 'ButtonComponent'
+  name: 'ButtonComponent',
+  props: {
+    active: {
+      type: Boolean,
+      default: false
+    }
+  }
 }
 </script>
 
@@ -19,12 +25,22 @@ export default {
     line-height: 15px;
     text-align: center;
     letter-spacing: -0.02em;
-    color: #B4B4B4;
     border: none;
     width: 100%;
     margin: 0;
     padding: 10px 95px 11px 96px;
-    background: #EEEEEE;
+
     border-radius: 10px;
+    background: #7BAE73;
+    color: #fff;
+    transition: color, 0.2s ease;
+    &:hover{
+      background: #52734c;
+    }
+    &:disabled{
+      background: #EEEEEE;
+      color: #B4B4B4;
+    }
   }
+
 </style>

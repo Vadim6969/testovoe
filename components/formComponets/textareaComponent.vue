@@ -6,9 +6,9 @@
     </label>
     <textarea
       :id='id'
-      :name='id'
       class='form__textarea'
-      :placeholder='placeholder'>
+      :placeholder='placeholder'
+      @input="$emit('input', $event.target.value)">
     </textarea>
   </div>
 </template>
@@ -64,7 +64,7 @@ export default {
     font-weight: normal;
     font-size: 12px;
     line-height: 15px;
-    color: $color-gray;
+    color: $color-dark;
     padding: 10px 16px;
     background: #FFFEFB;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
