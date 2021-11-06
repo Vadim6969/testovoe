@@ -44,7 +44,7 @@
     <div class='card__about'>
       <h3 class='card__title'>{{ title }}</h3>
       <p class='card__text'>{{ text }}</p>
-      <span class='card__price'>{{ price }}</span>
+      <span class='card__price'>{{ price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") }} руб.</span>
     </div>
   </li>
 </template>
@@ -87,10 +87,11 @@ export default {
 <style scoped lang='scss'>
 .card {
   cursor: pointer;
-  max-width: calc((100% / 3) - 11px); // могу и гридами, но гридами любой может, а то скажите что без гридов не могу
+  max-width: calc((100% / 3) - 11px); // могу и гридами, но гридами любой может, а то скажите что без гридов не могу =)
   width: 100%;
   position: relative;
   max-height: 423px;
+  min-height: 423px;
   background: #FFFEFB;
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
   border-radius: 4px;

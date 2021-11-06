@@ -1,12 +1,12 @@
 <template>
   <form class='form form-wrapper'
-        @submit.prevent="formSubmit">
+        @submit.prevent='formSubmit'>
     <input-component
       id='name'
       v-model='form.title'
       placeholder='Введите наименование товара'
       label='Наименование товара'
-      required-val/>
+      required-val />
     <textarea-component
       id='textarea'
       v-model='form.text'
@@ -18,14 +18,14 @@
       v-model='form.img'
       placeholder='Введите ссылку'
       label='Ссылка на изображение товара'
-      required-val/>
+      required-val />
     <input-component
       id='price'
       v-model='form.price'
       placeholder='Введите цену'
       label='Цена товара'
       mask-price
-      required-val/>
+      required-val />
     <button-component :active='formValid' class='form__btn'>
       Добавить товар
     </button-component>
@@ -33,10 +33,11 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from 'vuex'
 import InputComponent from '~/components/formComponets/inputComponent'
 import TextareaComponent from '~/components/formComponets/textareaComponent'
 import ButtonComponent from '~/components/formComponets/buttonComponent'
+
 export default {
   name: 'FormComponent',
   components: { ButtonComponent, TextareaComponent, InputComponent },
@@ -44,18 +45,18 @@ export default {
     return {
       form: {
         id: Date.now(),
-        title: "",
-        text: "",
-        img: "",
-        price: "",
+        title: '',
+        text: '',
+        img: '',
+        price: ''
       },
       formValid: false
     }
   },
   watch: {
     form: {
-      handler(val){
-        this.formValid = !!(val.title && val.price && val.img);
+      handler(val) {
+        this.formValid = !!(val.title && val.price && val.img)
       },
       deep: true
     }
@@ -64,8 +65,8 @@ export default {
     ...mapActions({
       addCard: 'cardList/addCard'
     }),
-    formSubmit(){
-     this.addCard(this.form)
+    formSubmit() {
+      this.addCard(this.form)
     }
   }
 
@@ -84,7 +85,8 @@ export default {
   background: #FFFEFB;
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
   border-radius: 4px;
-  &__btn{
+
+  &__btn {
     margin-top: 8px;
   }
 }

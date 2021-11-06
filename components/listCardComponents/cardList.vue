@@ -24,9 +24,11 @@ export default {
 
   computed: {
     ...mapGetters({
-      getList: 'cardList/getList'
-    })
+      getList: 'cardList/getList',
+    }),
+
   },
+
   mounted() {
     this.cardList = this.getList
   },
