@@ -44,15 +44,25 @@ export default {
   },
   data() {
     return {
-      value:''
+      value:'',
+    }
+  },
+  computed: {
+    valueMask: {
+      get() {
+        return this.value
+      },
+      set(val) {
+        this.$emit('input', val)
+      }
     }
   },
   methods: {
     input(e) {
       if(this.maskPrice) {
-        const val = e.target.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+        const val = e.target.value
         this.value = val
-        this.$emit('input', val)
+        this.$emit('input', Number(val))
       } else {
         this.$emit('input', e.target.value)
       }

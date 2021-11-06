@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from 'vuex'
 import Card from '~/components/listCardComponents/card'
 export default {
   name: 'CardList',
@@ -28,10 +28,17 @@ export default {
     }),
 
   },
-
   mounted() {
+    this.loadList()
     this.cardList = this.getList
+
   },
+  methods: {
+    ...mapActions({
+      loadList: 'cardList/loadList'
+    })
+  },
+
 
 }
 </script>

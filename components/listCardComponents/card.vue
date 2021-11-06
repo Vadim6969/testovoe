@@ -44,7 +44,7 @@
     <div class='card__about'>
       <h3 class='card__title'>{{ title }}</h3>
       <p class='card__text'>{{ text }}</p>
-      <span class='card__price'>{{ price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") }} руб.</span>
+      <span class='card__price'>{{ price.toLocaleString() }} руб.</span>
     </div>
   </li>
 </template>
